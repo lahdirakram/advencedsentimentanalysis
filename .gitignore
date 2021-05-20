@@ -1,4 +1,6 @@
 /web-app/sentiments.pt
+/web-app/camembert-classification/*
+/web-app/camemberttokenizer/*
 /model-training/allocine.csv
 /web-app/__pycache__/NLP.cpython-36.pyc
 /web-app/__pycache__/app.cpython-36.pyc
