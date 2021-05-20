@@ -1,5 +1,4 @@
 import torch
-from sklearn import metrics
 from transformers import CamembertForSequenceClassification, CamembertTokenizer
 
 class Sentiment:
@@ -36,15 +35,3 @@ class Sentiment:
             probabilites = torch.softmax(output.logits, dim=1).tolist()
         
         return probabilites[0]
-
-
-
-"""
-L’objectif de cet article consiste à identifier les enjeux de la différenciation selon le genre dans l’accompagnement collectif de la femme potentiellement créatrice. 
-A partir d’une démarche abductive, nous montrons que la mise en place de collectifs de femmes, dans la phase ante-création, est génératrice de confiance en soi. 
-Le caractère bienveillant, empathique et non compétitif du groupe exclusivement féminin facilite, pour certaines femmes candidates à la création, la déconstruction de stéréotypes 
-de genre sur l’entrepreneuriat féminin et atténue le sentiment de culpabilité lié à la difficulté à concilier projet entrepreneurial et vie familiale. En d’autres termes, 
-la participation de la femme potentiellement créatrice à un collectif féminin répond à un besoin psychologique d’approbation externe qui peut faire défaut, notamment 
-au sein de la famille. Toutefois, la pratique de l’accompagnement collectif au féminin dans la phase <em>ante</em>-création présente certaines limites. Ces dernières 
-résultent de l’importance accordée par certaines femmes à la mise en place d’un environnement mixte pour le partage d’expériences entrepreneuriales diverses et le 
-développement de réseaux d’affaires."""
