@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM pytorch/pytorch
 LABEL creator.name="Mohamed Akram LAHDIR"
 LABEL creator.email="mohamedakram.lahdir@gmail.com"
 RUN apt-get update -y
