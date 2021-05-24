@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template
 from NLP import Sentiment
 from numpy import argmax
-
+ 
 app = Flask(__name__)
 sentiment_analyser = Sentiment('cpu',512)
 labels = ['positif','negatif']
@@ -32,6 +32,3 @@ def predict():
         'text' : text
         }
 
-if __name__ == '__main__':
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=8080)

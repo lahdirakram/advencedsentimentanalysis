@@ -55,7 +55,7 @@
         function get_sentiment(){
             text = $('#text').val();
             encoded_text = encodeURI(text);
-            url = "http://127.0.0.1:5000/predict?text="+encoded_text;
+            url = window.location.href+"predict?text="+encoded_text;
             
             $.get(url,function(data,status){
                 $('#sentiment').text(data['sentiment']);
