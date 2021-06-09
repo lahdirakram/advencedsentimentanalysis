@@ -7,6 +7,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <style>
+        @media (max-width: 900px) { 
+            .form {
+                grid-column:1/4!important; 
+                margin: 5px!important;
+                grid-template-columns: unset!important;
+            }
+        }
+        .header span {
+            margin: 5px;
+        }
+    </style>
 </head>
 <body style="margin: 0px;">
     <div style="
@@ -18,18 +32,54 @@
     grid-auto-rows: minmax(100px, auto);">
         <div style="grid-row: 1;background-color: white;display: grid;grid-template-columns: 0.5fr 3fr 0.5fr;">  
             <div style="grid-column: 2; grid-row: 3;">
-                <div style="grid-column: 2;grid-row: 2;text-align-last: center;">
-                    <h1 style="font-size: 80px;">Sentiment Analyzer</h1>
+                <div class="header" style="grid-column: 2;grid-row: 2;text-align: center;">
+                    <h1 style="font-size: 300%; text-align: center;">Analyse des Sentiments</h1>
                     <p>French - Français</p>
+                    <!-- Place this tag where you want the button to render. -->
+                    <a  class="github-button" 
+                        href="https://github.com/lahdirakram/advencedsentimentanalysis/subscription" 
+                        data-color-scheme="no-preference: light; light: light; dark: dark;" 
+                        data-size="large" 
+                        data-show-count="true" 
+                        aria-label="Watch lahdirakram/advencedsentimentanalysis on GitHub">
+                        Watch
+                    </a>
+                    <!-- Place this tag where you want the button to render. -->
+                    <a  class="github-button" 
+                        href="https://github.com/lahdirakram" 
+                        data-color-scheme="no-preference: light; light: light; dark: dark;" 
+                        data-size="large" 
+                        data-show-count="true" 
+                        aria-label="Follow @lahdirakram on GitHub">
+                        Follow @lahdirakram
+                    </a>
                 </div>  
             </div>
         </div>
         <div style="grid-row: 2;grid-gap: 20px;display: grid;grid-template-rows: min-content;grid-template-columns: 1fr 2fr 1fr;">
             <div style="grid-column: 1/4;display: grid;grid-template-columns: 1fr 2fr 1fr;grid-gap: 20px;">
                 <div style="grid-row: 1;grid-column: 1/4;display: grid;grid-template-columns: 1fr 2fr 1fr;">
-                    <div style="grid-column: 2;display: grid;grid-template-columns: 2fr auto;grid-gap: 5px;">
-                        <textarea id="text" class="form-control" name="text" style="margin-top: 0px; margin-bottom: 0px; height: 38px;" rows="1"></textarea>
-                        <input id="ok" type="submit" name="submit" style="margin-bottom: 0px!important;" class="btn btn-light">
+                    <div class="form" style="grid-column: 2;display: grid;grid-template-columns: 2fr auto;grid-gap: 5px;">
+                        <textarea id="text" class="form-control" name="text" style="margin-top: 0px; margin-bottom: 0px; min-height: 200px;" rows="1"></textarea>
+                        <button id="ok" name="submit" style="margin-bottom: 0px!important;" class="btn btn-light">
+                            <div id="send">envoyer</div>
+                            <div 
+                            id="pbar"
+                            style="
+                                width: 50px;
+                                height: 50px;
+                                border-radius: 50px;
+                                border-bottom-color: white;
+                                border-bottom-width: 10px;
+                                border-bottom-style: double;
+                                display: inline-block;
+                                animation-name: spin;
+                                animation-duration: 40ms;
+                                animation-iteration-count: infinite;
+                                animation-timing-function: linear;
+                                background-color: #1a1e23;
+                                "></div>
+                        </button>
                     </div>   
                 </div>
             </div>
@@ -53,10 +103,14 @@
     </div>
 
     <script>
+
         function get_sentiment(){
+            $('#send').hide()
+            $('#pbar').show()
+
             text = $('#text').val();
             encoded_text = encodeURI(text);
-            url = window.location.href+"predict?text="+encoded_text;
+            url = window.location.origin+"/predict?text="+encoded_text;
             
             $.get(url,function(data,status){
                 $('#sentiment').text(data['sentiment']);
@@ -71,6 +125,8 @@
         }
         document.getElementById('ok').addEventListener('click',get_sentiment);
         $('#table').hide()
+        $('#pbar').hide()
+
     </script>
 </body>
 </html>

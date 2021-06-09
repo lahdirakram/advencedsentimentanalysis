@@ -1,0 +1,18 @@
+<table>
+	<thead>
+		<tr>
+			<th>Visiter</th>
+			<th>Text</th>
+			<th>Prediction</th>
+		</tr>
+	</thead>
+	<body>
+		{% for h in history %}
+			<tr>
+				<td>{{h['visiter']}}</td>
+				<td>{{h['text']}}</td>
+				<td>{{h['prediction']}}</td>
+			</tr>
+		{% endfor %}
+	</body>
+</table>
